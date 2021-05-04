@@ -1,0 +1,9 @@
+*.swp
+.idea
+.thougths.md
+__pycache__/
+
+*.log
+*.pyc
+
+.files/
