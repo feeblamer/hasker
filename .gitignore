@@ -2,6 +2,7 @@
 .idea
 .thougths.md
 __pycache__/
+venv/
 
 *.log
 *.pyc
