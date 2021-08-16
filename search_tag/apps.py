@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class PostConfig(AppConfig):
+class SearchTagConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'post'
+    name = 'search_tag'
