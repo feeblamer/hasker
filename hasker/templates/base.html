@@ -1,8 +1,15 @@
+{% load static %}
 <!DOCTYPE>
+
 <html lang="ru">
         <head>
                 <meta charset="utf-8">
-                <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+       <!--         <link
+               href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+               rel="stylesheet"
+               integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+               crossorigin="anonymous"> -->
+               <link rel="stylesheet" href="{% static '/css/bootstrap.css' %}">
                 <title>{% block title %} {% endblock %} </title>
         </head>
         <body>
@@ -11,13 +18,10 @@
 		    <div class="container">
      		    	<div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
        				 <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-         				 <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
+                                         <img src="{% static '/images/hasker_logo_white.png' %}" height="50">
        				 </a>
 
        				 <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-        				  <li><a href="#" class="nav-link px-2 text-secondary">Home</a></li>
-       					   <li><a href="#" class="nav-link px-2 text-white">Features</a></li>
-       					  <li><a href="#" class="nav-link px-2 text-white">Pricing</a></li>
                                           <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
                                            <li><a href="#" class="nav-link px-2 text-white">About</a></li>
                                  </ul>
@@ -35,5 +39,6 @@
   </header>
 
  {% block content %}{% endblock %}
+
         </body>
 </html>
