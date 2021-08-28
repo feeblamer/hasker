@@ -26,8 +26,7 @@ SECRET_KEY = 'django-insecure-(zciec_7_ih013^o*)_3+!ko-&1rav6te7rj#wcq9cc=-s_pv+
 DEBUG = True
 
 ALLOWED_HOSTS = [
-        "http://192.168.42.193",
-        "127.0.0.1"
+        "127.0.0.1",
         ]
 
 
@@ -134,3 +133,5 @@ STATICFILES_FINDERS = [
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
