@@ -6,6 +6,6 @@ venv/
 
 *.log
 *.pyc
-
+media/
 .files
 *.sqlite3
