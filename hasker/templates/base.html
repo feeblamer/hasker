@@ -2,41 +2,44 @@
 <!DOCTYPE>
 
 <html lang="ru">
-        <head>
-                <meta charset="utf-8">
-       <!--         <link
+
+<head>
+    <meta charset="utf-8">
+    <!--         <link
                href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
                rel="stylesheet"
                integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
                crossorigin="anonymous"> -->
-               <link rel="stylesheet" href="{% static '/css/bootstrap.css' %}">
-                <title>{% block title %} {% endblock %} </title>
-        </head>
-        <body>
-                
-		<header class="-3 bg-dark text-white">
-		    <div class="container">
-     		    	<div class="d-flex flex-wrap align-items-center justify-content-center">
-       				 <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-                                         <img src="{% static '/images/hasker_logo_white.png' %}" height="50">
-       				 </a>
+    <link rel="stylesheet" href="{% static '/css/bootstrap.css' %}">
+    <title>{% block title %} {% endblock %} </title>
+</head>
+
+<body>
+
+    <header class="bg-dark text-white">
+        <div class="container">
+            <div class="d-flex flex-wrap align-items-center justify-content-center ">
+                <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                    <img src="{% static '/images/hasker_logo_white.png' %}" height="50">
+                </a>
 
 
-                                 <form class="col-5 ms-4 mb-5 mb-lg-0 me-lg-4">
-                                         <input class="form-control form-control-dark" placeholder="Search..." aria-label="Search" type="search">
-                                 </form>
+                <form class="col-xs-12 col-sm-8 col-md-8 mx-auto mt-3">
+                    <input class="form-control form-control-dark" placeholder="Search..." aria-label="Search" type="search">
+                </form>
 
-                                 <div class="text-end">
-                                         <button type="button" class="btn btn-outline-light me-2">Login</button>
-                                         <button type="button" class="btn btn-primary">Sign-up</button>
-                                 </div>
-                         </div>
-                 </div>
-  </header>
-            <div class="container-fluid">
-                {% block content %}{% endblock %}
+                <div class="text-end">
+                    <button type="button" class="btn btn-outline-light me-2">Login</button>
+                    <button type="button" class="btn btn-primary">Sign-up</button>
+                </div>
             </div>
+        </div>
+    </header>
+    <div class="container-fluid">
+        {% block content %}{% endblock %}
+    </div>
 
 
-        </body>
+</body>
+
 </html>

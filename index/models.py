@@ -52,9 +52,9 @@ class User(AbstractBaseUser):
 
     def has_module_perms(self, app_label):
         return self.is_superuser
-    # class Meta:
-    #     verbose_name = 'Пользователь'
-    #     verbose_name_plural = 'Пользователи'
+    class Meta:
+        verbose_name = 'Пользователь'
+        verbose_name_plural = 'Пользователи'
 
 
 

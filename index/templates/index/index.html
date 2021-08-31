@@ -1,20 +1,17 @@
-{% extends "base.html" %}
-{% block title %} {{ site_name }} - Главная страница {% endblock %}
-{% block content  %}<div class="container">
+{% extends "base.html" %} {% block title %} {{ site_name }} - Главная страница {% endblock %} {% block content %}
+<div class="container">
 
-                {% for question in all_questions %}
-                <div class="card my-4">
-                    <div class="card-body">
-                 <h2 class="card-title" > {{ question.title }} </h2>
-                        <p class="card-text" > {{ question.content }} </p>
-                    <div class="row ms-2 ">
-                    {% for tag in question.tags.all %}
-                            <span class=" col-2 badge bg-primary me-2"> {{ tag.word }} </span>
-                     {% endfor %}
-                       </div>
-                    </div>
-                {% endfor %}
-                </div>
+    {% for question in all_questions %}
+    <div class="card my-4">
+        <div class="card-body">
+            <h2 class="card-title"> {{ question.title }} </h2>
+            <p class="card-text"> {{ question.content }} </p>
+            <div class="row ms-2 ">
+                {% for tag in question.tags.all %}
+                <span class=" col-2 badge bg-primary me-2"> {{ tag.word }} </span> {% endfor %}
+            </div>
         </div>
+    </div>
+    {% endfor %}
+</div>
 {% endblock %}
-
