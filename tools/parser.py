@@ -1,17 +1,20 @@
 from collections import namedtuple
 from random import sample, choice
-
+from bs4 import BeautifulSoup
 import requests
 import json
 import string
 BASE_URL = 'https://discuss.python.org/c/users/7.json?page={}'
+BASE_POST_URL = 'https://discuss.python.org/t/{}/{}'
 
 User = namedtuple('User', ['username', 'password', 'email'])
+Question = namedtuple('Question', ['title', 'content', 'tags'])
 
 def grab_usernames(url):
     j = get_json(url)
     users = get_users(j)
     return [user['username'] for user in users]
+
 
 def email_generator():
     email_servers = [
@@ -47,7 +50,8 @@ def get_json(url):
     r = requests.get(url)
     return r.json()
 
-def get_topics(j):
+def get_topics(url):
+    j = get_json(url)
     return  j['topic_list']['topics']
 
 def get_users(j):
@@ -67,11 +71,53 @@ def create_models_user():
             users.append(user)
     return users
 
+def grub_article(url):
+    r = requests.get(url)
+    html = r.text
+    soup = BeautifulSoup(html, 'lxml')
+    post = soup.find('div', class_='post')
+    if post:
+        text = ''
+        for tag in post.children:
+            try:
+                text += tag.text
+            except:
+                print('Найден тег без текста')
+        return text
+    else:
+        raise Exception('Не удалось найти содержимое поста')
+    
+
+def url_for_grub(page=6):
+    topics = get_topics(BASE_URL.format(page))
+    number = choice(range(0,20))
+    slug = topics[number]['slug']
+    post_id = topics[number]['id']
+    return BASE_POST_URL.format(slug, post_id)
+
+
+def create_models_question():
+    questions = []
+    for i in range(1,2):
+        url = BASE_URL.format(i)
+        topics = get_topics(url) 
+        for topic in topics:
+            slug = topic['slug']
+            title = topic['title']
+            post_id = topic['id']
+            url_post = BASE_POST_URL.format(slug, post_id)
+            content = grub_article(url_post)
+            tags = sample(range(0,10), 3)
+            questions.append(
+                Question(title, content, tags)
+                )
+    return questions
+    
+
 
 def main():
-    print(
-        create_models_user()
-    )
+    pass
+
 
 if __name__ == '__main__':
     main()
